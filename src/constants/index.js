@@ -15,6 +15,8 @@ import {
   mongodb,
   git,
   figma,
+  coders,
+  bot,
   docker,
   chatgpt,
   meta,
@@ -35,7 +37,7 @@ export const navLinks = [
   },
   {
     id: "work",
-    title: "Work",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -53,12 +55,12 @@ const services = [
     icon: mobile,
   },
   {
-    title: "Node.js ",
-    icon: backend,
-  },
-  {
     title: "React.js ",
     icon: creator,
+  },
+  {
+    title: "Node.js ",
+    icon: backend,
   },
 ];
 
@@ -130,8 +132,8 @@ const experiences = [
       "SSLC - 94.6%",
       "HSC - 84.6%",
       // "Scored centum in Computer_Science Public Exam",
-      "Won the school basketball championship six times in a row",
-      "Member of Junior Red Cross",
+      "Won the District basketball championship six times in a row",
+      // "Member of Junior Red Cross",
     ],
   },
   {
@@ -142,9 +144,9 @@ const experiences = [
     date: "Nov 2020 - May 2024 expected graduation",
     points: [
       "CGPA: 8.6 till 5th Sem",
-      "Satrted developed efficient and high-quality websites in college",
+      "Started developing efficient and high-quality websites in college",
       "Implemented responsive design and ensuring cross-browser compatibility.",
-      "Participated in CSI Web-A-Fest contest in BIT-College,Sathyamangalam",
+      "Participated in a CSI Web-A-Fest contest in BIT-College,Sathyamangalam",
     ],
   },
   {
@@ -154,7 +156,7 @@ const experiences = [
     iconBg: "#fff",
     date: "Mar 2023 - Apr 2023",
     points: [
-      "Worked as a paid React developer in a tour website",
+      "Worked as a paid React developer in the company",
       "Created and managed the entire Hotel and Ship section in the website",
       "Developed excellent mobile-responsive UI/UX designs",
       "Learned from an experienced team and used Scrum methodology",
@@ -170,7 +172,6 @@ const experiences = [
       "Master Three.js and TypeScript to enhance web development skills",
       "Expand expertise in mobile development by learning React Native and Flutter frameworks",
       "Stay current with emerging technologies by exploring Web3 and Blockchain",
-     
     ],
   },
 ];
@@ -204,27 +205,41 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Youtube-v3",
+    name: "AI Image Generation",
     description:
-      "As a developer.I always loved to work with API's. So to test my skills I have cloned the YouTube using Youtube-V3 API, React, and Material UI. This project showcases my ability to work with APIs and create responsive and user-friendly interfaces using popular front-end libraries. Take a look at the live demo to see my work in action!",
+      "I built this website using MERN stack and integrated Cloudinary for image storage and management. The user interface was designed using Tailwind to provide a modern and responsive experience. It my ability to combine cutting-edge AI technology with robust web development ",
     tags: [
       {
-        name: "React",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "React-Router",
+        name: "MONGODB",
         color: "green-text-gradient",
       },
       {
-        name: "Material-UI",
+        name: "Express_JS",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "React_JS",
         color: "pink-text-gradient",
       },
+      {
+        name: "Node_JS",
+        color: "green-text-gradient",
+      },
+
+      {
+        name: "Dalle",
+        color: "blue-text-gradient",
+      },
     ],
-    image: youtube,
-    source_code_link: "https://github.com/Hariharan107/YouTube_Clone",
-    website_demo_link: "https://messi-tube.vercel.app",
+    // image:
+    // "https://media.discordapp.net/attachments/1008571080300052482/1093168725995307079/Nata_sha_demon_anime_girl_whispers_in_full_growth_wings_40d8fdba-e7e9-4ac3-9356-5616f04bbc3b.png?width=610&height=610",
+    image:
+      "https://media.discordapp.net/attachments/1008571080300052482/1093172205208215714/doudou6_A_donkey_is_a_rapper_dressed_in_West_Coast_style_clothi_274d12aa-b0e9-4ea8-a8cb-06a75c6ea8a3.png?width=610&height=610",
+    source_code_link:
+      "https://github.com/Hariharan107/Messi_X-AI_Image_Generation",
+    website_demo_link: "https://dalle-x.vercel.app/",
   },
+
   {
     name: "An UI/UX Design",
     description:
@@ -269,6 +284,88 @@ const projects = [
       "https://images.hindustantimes.com/tech/img/2023/02/02/960x540/OPENAI-CHATGPT-29_1673677367866_1673677367866_1675339563493_1675339563493.jpg",
     source_code_link: "https://github.com/Hariharan107/Messi_X-ChatGPT-Clone",
     website_demo_link: "https://messi-x.vercel.app",
+  },
+  {
+    name: "Youtube-v3",
+    description:
+      "As a developer.I always loved to work with API's. So to test my skills I have cloned the YouTube using Youtube-V3 API, React, and Material UI. This project showcases my ability to work with APIs and create responsive and user-friendly interfaces using popular front-end libraries. Take a look at the live demo to see my work in action!",
+    tags: [
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "React-Router",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Material-UI",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: youtube,
+    source_code_link: "https://github.com/Hariharan107/YouTube_Clone",
+    website_demo_link: "https://messi-tube.vercel.app",
+  },
+  {
+    name: "Spotify",
+    description:
+      "This project is a clone of the popular music streaming service, Spotify. I built the application using the Spotify Web API and integrated Styled Components for a sleek and modern user interface. This project demonstrates my ability to work with APIs and create a seamless user experience that closely mimics the original application.",
+    tags: [
+      {
+        name: "ReactJS",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Styled_Components",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Axios",
+        color: "pink-text-gradient",
+      },
+    ],
+
+    image:
+      "https://helios-i.mashable.com/imagery/articles/050bXhdmNaL9bDGAINptcrL/hero-image.fill.size_1200x1200.v1617973265.jpg",
+    source_code_link: "https://github.com/Hariharan107/Spotify",
+    website_demo_link: "https://spotify-hari.netlify.app/",
+  },
+  {
+    name: "My Projects Collections",
+    description:
+      "For more examples of my work, please visit my GitHub profile. There you will find a diverse range of projects that showcase my skills and expertise in various technologies. I am always open to new collaborations and opportunities to work with others on exciting projects. If you’re interested in working with me, please don’t hesitate to get in touch!",
+    tags: [
+      {
+        name: "Ready_To_Collab",
+        color: "blue-text-gradient",
+      },
+      // {
+      //   name: "Express_JS",
+      //   color: "blue-text-gradient",
+      // },
+      // {
+      //   name: "React_JS",
+      //   color: "pink-text-gradient",
+      // },
+      // {
+      //   name: "Node_JS",
+      //   color: "green-text-gradient",
+      // },
+
+      // {
+      //   name: "Dalle",
+      //   color: "blue-text-gradient",
+      // },
+    ],
+    // image:
+    // "https://media.discordapp.net/attachments/1008571080300052482/1093168725995307079/Nata_sha_demon_anime_girl_whispers_in_full_growth_wings_40d8fdba-e7e9-4ac3-9356-5616f04bbc3b.png?width=610&height=610",
+    image:
+      "https://github.githubassets.com/images/modules/signup/launch_codes/launch-codes-mona-fallback@1x.jpg",
+    // image:
+    //   "https://media.discordapp.net/attachments/1008571147853504612/1093156398482866356/magata_Systemic._Gorgeous_goddess_of_charity._A_dress_made_of_t_704c7e8e-b246-45b7-b06b-66afb74155bc.png?width=610&height=610",
+    source_code_link: "https://github.com/Hariharan107",
+    website_demo_link: "https://www.instagram.com/ig_messi__10/",
   },
 ];
 
