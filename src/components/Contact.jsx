@@ -4,6 +4,8 @@ import emailjs from "@emailjs/browser";
 import { styles } from "../style";
 import { EarthCanvas } from "./canvas";
 import { sectionWrapper } from "../hoc";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 import { slideIn } from "../utils/motion";
 
@@ -11,6 +13,18 @@ import { slideIn } from "../utils/motion";
 //service_z04omek
 //Ob9JsxpV_UVR7q_TC
 const Contact = () => {
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(4, "Name should be more than 4 characters")
+      .required("Please enter your name"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Please enter your email"),
+    message: Yup.string()
+      .min(10, "The message should be more than 10 characters")
+      .required("Please enter your message"),
+  });
+
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -19,44 +33,11 @@ const Contact = () => {
     message: "",
   });
   const handleChange = (e) => {
-    // console.log(e.target);
     const { name, value } = e.target;
 
     setForm((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    emailjs
-      .send(
-        "service_qza1hqp",
-        "template_941qrk6",
-        {
-          from_name: form.name,
-          to_name: "Hariharan MNJ",
-          from_email: form.email,
-          to_email: "francispope107@gmail.com",
-          message: form.message,
-        },
-        "Ob9JsxpV_UVR7q_TC"
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible");
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.log(error);
-          alert("something went wrong");
-        }
-      );
-  };
+
   return (
     <div className='xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden'>
       <motion.div
@@ -65,51 +46,104 @@ const Contact = () => {
       >
         <p className={styles.sectionSubText}>Get in Touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
+        <Formik
+          initialValues={{ name: "", email: "", message: "" }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            setLoading(true);
+            emailjs
+              .send(
+                "service_qza1hqp",
+                "template_941qrk6",
+                {
+                  from_name: values.name,
+                  to_name: "Hariharan MNJ",
+                  from_email: values.email,
+                  to_email: "hariharan107@gmail.com",
+                  message: values.message,
+                },
+                "Ob9JsxpV_UVR7q_TC"
+              )
+              .then(
+                () => {
+                  setLoading(false);
+                  alert(
+                    "Thank you. I will get back to you as soon as possible"
+                  );
+                  resetForm();
+                },
+                (error) => {
+                  setLoading(false);
+                  console.log(error);
+                  alert("something went wrong");
+                }
+              );
+            setSubmitting(false);
+          }}
         >
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your Email?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Message</span>
-            <textarea
-              rows='7'
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What do you want to say?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <button
-            type='submit'
-            className='bg-tertiary py-3 px-8 outline-none text-white w-fit font-bold shadow-md shadow-primary rounded-xl'
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </form>
+          {({ errors, touched }) => (
+            <Form ref={formRef} className='mt-12 flex flex-col gap-8'>
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>Your Name</span>
+                <Field
+                  type='text'
+                  name='name'
+                  placeholder="What's your good name?"
+                  className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium ${
+                    touched.name && errors.name ? "border-red-500" : ""
+                  }`}
+                />
+                <ErrorMessage
+                  name='name'
+                  component='div'
+                  className='text-red-500 mt-2'
+                />
+              </label>
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>Your Email</span>
+                <Field
+                  type='email'
+                  name='email'
+                  placeholder="What's your Email?"
+                  className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium ${
+                    touched.email && errors.email ? "border-red-500" : ""
+                  }`}
+                />
+                <ErrorMessage
+                  name='email'
+                  component='div'
+                  className='text-red-500 mt-2'
+                />
+              </label>
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>
+                  Your Message
+                </span>
+                <Field
+                  as='textarea'
+                  rows='7'
+                  name='message'
+                  placeholder='What do you want to say?'
+                  className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium ${
+                    touched.message && errors.message ? "border-red-500" : ""
+                  }`}
+                />
+                <ErrorMessage
+                  name='message'
+                  component='div'
+                  className='text-red-500 mt-2'
+                />
+              </label>
+              <button
+                type='submit'
+                disabled={loading}
+                className='bg-tertiary py-3 px-8 outline-none text-white w-fit font-bold shadow-md shadow-primary rounded-xl'
+              >
+                {loading ? "Sending..." : "Send"}
+              </button>
+            </Form>
+          )}
+        </Formik>
       </motion.div>
       <motion.div
         variants={slideIn("right", "tween", 0.65, 0.75)}
