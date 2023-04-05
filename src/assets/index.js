@@ -29,7 +29,6 @@ import chatgpt from "./Projects/chatgpt.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
-import coders from "./Projects/dalle.png";
 import bot from "./Projects/WelcomeCoderzbot.png";
 export {
   logo,
