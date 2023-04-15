@@ -125,7 +125,7 @@ const experiences = [
   {
     title: "Schooling ",
     company_name: "Counian Matriculation Higher Secondary School",
-    icon: "	https://scontent-tir2-2.xx.fbcdn.net/v/t39.30808-6/276292186_7192963170745592_5915334406281602100_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RgqX45ssyhkAX8mhtZe&_nc_ht=scontent-tir2-2.xx&oh=00_AfBgVwzQgrbmFzObTjHVNznq-sZyLjVMGpFnh-wBD0V1qA&oe=6432775C",
+    icon: "https://www.orchidsinternationalschool.com/wp-content/uploads/2022/09/Primary-School-scaled.jpg",
     iconBg: "#fff",
     date: "March 2005 - May 2020",
     points: [
