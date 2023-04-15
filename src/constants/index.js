@@ -15,8 +15,8 @@ import {
   mongodb,
   git,
   figma,
-  coders,
-  bot,
+  // coders,
+  // bot,
   docker,
   chatgpt,
   meta,
@@ -125,7 +125,7 @@ const experiences = [
   {
     title: "Schooling ",
     company_name: "Counian Matriculation Higher Secondary School",
-    icon: "https://www.orchidsinternationalschool.com/wp-content/uploads/2022/09/Primary-School-scaled.jpg",
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7PpJptW55qxtpZkmt8q-p-4-ZQ1rmNrjjyA&usqp=CAU",
     iconBg: "#fff",
     date: "March 2005 - May 2020",
     points: [
