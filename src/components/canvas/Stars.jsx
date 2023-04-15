@@ -19,7 +19,7 @@ const Stars = (props) => {
           transparent
           color='#f272c8'
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
